@@ -168,6 +168,7 @@ angular.module('ngBootbox', [])
           getTemplate(options.templateUrl)
             .then(function (template) {
               options.scope = options.scope || $rootScope;
+              angular.extend(options.scope, options.data);
               options.message = $compile(template)(options.scope);
               $window.bootbox.dialog(options);
             }, function () { //Show default dialog if no template could be found
